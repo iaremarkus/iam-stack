@@ -1,0 +1,3 @@
+.group > * {
+  @apply rounded-none first:rounded-l-md last:rounded-r-md;
+}
