@@ -78,5 +78,5 @@ export default withUt({
       },
     },
   },
-  plugins: [fluid, animate, typo, queries],
+  plugins: [fluid, animate, typo, queries, animate],
 } satisfies Config);

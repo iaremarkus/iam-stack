@@ -1,6 +1,5 @@
 import "./globals.css";
 
-import { User } from "@prisma/client";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
@@ -8,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { extractRouterConfig } from "uploadthing/server";
 
 import { auth } from "@/auth";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import { ourFileRouter } from "./api/uploadthing/core";
 
@@ -29,8 +29,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
-
-  const { user } = (session as unknown as { user: User }) || {};
 
   return (
     <html lang="en" suppressHydrationWarning>
