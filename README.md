@@ -1,8 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). On top of that, the **iam stack** is configured to hit the ground running with the following integrations:
+
+- [shadcn/ui](https://github.com/shadcn-ui/ui)
+- [Next Auth Beta](https://github.com/nextauthjs/next-auth)
+- [UploadThing](https://github.com/pingdotgg/uploadthing)
+- [Prisma](https://github.com/prisma)
+- [Sendgrid](https://github.com/sendgrid)
+- [Fluid Tailwind](https://github.com/barvian/fluid-tailwind)
+- [Framer Motion](https://github.com/motiondivision/motion)
+- [Zod](https://github.com/colinhacks/zod)
+- [zsa](https://github.com/IdoPesok/zsa)
 
 ## Getting Started
 
-First, run the development server:
+### Environment
+
+Update `.env.example` to `.env` and fill in the required keys.
+
+### Database
+
+The `./prisma` folder has a db connection singleton, a schema file including the NextAuth required models for session management, and a basic seed script to create your `SUPER` user.
+
+Do the usual Prisma init steps like `bunx prisma db push`, `bunx prisma generate`, `bun prisma migrate dev` and `bun prisma db seed`.
+
+Then, you're ready to run the development server:
 
 ```bash
 npm run dev
