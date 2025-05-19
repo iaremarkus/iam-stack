@@ -8,6 +8,7 @@ import { extractRouterConfig } from "uploadthing/server";
 
 import { auth } from "@/auth";
 import { ThemeProvider } from "@/components/theme-provider";
+import QueryProvider from "@/context/QueryProvider";
 
 import { ourFileRouter } from "./api/uploadthing/core";
 
@@ -37,7 +38,7 @@ export default async function RootLayout({
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <QueryProvider>{children}</QueryProvider>
           </ThemeProvider>
         </SessionProvider>
       </body>
