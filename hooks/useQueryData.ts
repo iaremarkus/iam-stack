@@ -1,9 +1,12 @@
-import { User } from "@prisma/client";
-import { useQuery } from "@tanstack/react-query";
+import { prisma } from "@/prisma/db";
+
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 
 export function useUsers() {
-  return useQuery<User[]>({
-    queryKey: ["users"],
-    enabled: false,
-  });
+  return useSuspenseQuery(
+    queryOptions({
+      queryKey: ["users"],
+      queryFn: async () => await prisma.user.findMany(),
+    })
+  );
 }
