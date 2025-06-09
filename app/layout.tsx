@@ -11,6 +11,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import QueryProvider from "@/context/QueryProvider";
 
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Toaster } from "@/components/ui/sonner";
+import { ToasterMessage } from "@/blocks/atoms";
 
 const sans = DM_Sans({
   subsets: ["latin"],
@@ -29,8 +31,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`antialiased ${sans.variable}`} suppressHydrationWarning>
@@ -39,8 +39,12 @@ export default async function RootLayout({
 
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <QueryProvider>{children}</QueryProvider>
+
+            <Toaster position="top-center" richColors />
           </ThemeProvider>
         </SessionProvider>
+
+        <ToasterMessage />
       </body>
     </html>
   );
